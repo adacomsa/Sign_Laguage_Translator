@@ -1,4 +1,3 @@
-# STEP 1: Import the necessary modules.
 import mediapipe as mp
 from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
@@ -36,14 +35,14 @@ def draw_landmarks_on_image(image, detection_result):
             cv2.circle(annotated_image, (x, y), 5, (0, 0, 255), -1)
     return annotated_image
 
-# STEP 2: Create a HandLandmarker object.
+#Create a HandLandmarker object.
 base_options = python.BaseOptions(model_asset_path='hand_landmarker.task')
 options = vision.HandLandmarkerOptions(base_options=base_options,
                                        num_hands=2)
 detector = vision.HandLandmarker.create_from_options(options)
 
-# STEP 3: Start capturing video from the webcam.
-cap = cv2.VideoCapture(0)  # 0 is the default camera. Use 1 or 2 for external cameras.
+#Start capturing video from the webcam.
+cap = cv2.VideoCapture(0)  # 0 is the default camera
 
 if not cap.isOpened():
     print("Error: Could not open webcam.")
